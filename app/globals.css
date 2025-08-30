@@ -1,0 +1,487 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens to match modern emerald-based design system */
+  --background: oklch(1 0 0); /* #ffffff - Clean white background */
+  --foreground: oklch(0.35 0.01 258); /* #475569 - Professional slate gray text */
+  --card: oklch(0.97 0.005 258); /* #f1f5f9 - Light gray card backgrounds */
+  --card-foreground: oklch(0.35 0.01 258); /* #475569 - Text on cards */
+  --popover: oklch(1 0 0); /* #ffffff - White popover backgrounds */
+  --popover-foreground: oklch(0.35 0.01 258); /* #475569 - Text in popovers */
+  --primary: oklch(0.45 0.15 162); /* #059669 - Emerald primary color */
+  --primary-foreground: oklch(1 0 0); /* #ffffff - White text on primary */
+  --secondary: oklch(0.55 0.12 162); /* #10b981 - Emerald secondary/accent */
+  --secondary-foreground: oklch(1 0 0); /* #ffffff - White text on secondary */
+  --muted: oklch(0.97 0.005 258); /* #f1f5f9 - Muted backgrounds */
+  --muted-foreground: oklch(0.35 0.01 258); /* #475569 - Muted text */
+  --accent: oklch(0.55 0.12 162); /* #10b981 - Accent color */
+  --accent-foreground: oklch(1 0 0); /* #ffffff - Text on accent */
+  --destructive: oklch(0.45 0.22 15); /* #be123c - Error/destructive red */
+  --destructive-foreground: oklch(1 0 0); /* #ffffff - Text on destructive */
+  --border: oklch(0.92 0.005 258); /* #e2e8f0 - Light borders */
+  --input: oklch(1 0 0); /* #ffffff - Input backgrounds */
+  --ring: oklch(0.45 0.15 162 / 0.5); /* Emerald focus ring with opacity */
+  --chart-1: oklch(0.45 0.15 162); /* #059669 - Primary chart color */
+  --chart-2: oklch(0.55 0.12 162); /* #10b981 - Secondary chart color */
+  --chart-3: oklch(0.97 0.005 258); /* #f1f5f9 - Tertiary chart color */
+  --chart-4: oklch(0.35 0.01 258); /* #475569 - Quaternary chart color */
+  --chart-5: oklch(0.45 0.22 15); /* #be123c - Accent chart color */
+  --radius: 0.5rem; /* Modern 8px border radius */
+  --sidebar: oklch(1 0 0); /* #ffffff - Clean sidebar background */
+  --sidebar-foreground: oklch(0.35 0.01 258); /* #475569 - Sidebar text */
+  --sidebar-primary: oklch(0.97 0.005 258); /* #f1f5f9 - Sidebar primary background */
+  --sidebar-primary-foreground: oklch(0.35 0.01 258); /* #475569 - Sidebar primary text */
+  --sidebar-accent: oklch(0.55 0.12 162); /* #10b981 - Sidebar accent */
+  --sidebar-accent-foreground: oklch(1 0 0); /* #ffffff - Sidebar accent text */
+  --sidebar-border: oklch(0.92 0.005 258); /* #e2e8f0 - Sidebar borders */
+  --sidebar-ring: oklch(0.55 0.12 162 / 0.5); /* Sidebar focus ring */
+}
+
+.dark {
+  /* Updated dark mode tokens for better contrast and modern appearance */
+  --background: oklch(0.08 0.005 258); /* #0f172a - Deep dark background */
+  --foreground: oklch(0.95 0.005 258); /* #f8fafc - Light text */
+  --card: oklch(0.12 0.01 258); /* #1e293b - Dark card backgrounds */
+  --card-foreground: oklch(0.95 0.005 258); /* #f8fafc - Light text on cards */
+  --popover: oklch(0.12 0.01 258); /* #1e293b - Dark popover backgrounds */
+  --popover-foreground: oklch(0.95 0.005 258); /* #f8fafc - Light text in popovers */
+  --primary: oklch(0.55 0.12 162); /* #10b981 - Brighter emerald for dark mode */
+  --primary-foreground: oklch(0.08 0.005 258); /* #0f172a - Dark text on primary */
+  --secondary: oklch(0.25 0.01 258); /* #334155 - Dark secondary */
+  --secondary-foreground: oklch(0.95 0.005 258); /* #f8fafc - Light text on secondary */
+  --muted: oklch(0.25 0.01 258); /* #334155 - Dark muted backgrounds */
+  --muted-foreground: oklch(0.65 0.005 258); /* #94a3b8 - Muted text */
+  --accent: oklch(0.25 0.01 258); /* #334155 - Dark accent */
+  --accent-foreground: oklch(0.95 0.005 258); /* #f8fafc - Light text on accent */
+  --destructive: oklch(0.55 0.22 15); /* #ef4444 - Brighter red for dark mode */
+  --destructive-foreground: oklch(0.95 0.005 258); /* #f8fafc - Light text on destructive */
+  --border: oklch(0.25 0.01 258); /* #334155 - Dark borders */
+  --input: oklch(0.25 0.01 258); /* #334155 - Dark input backgrounds */
+  --ring: oklch(0.55 0.12 162 / 0.5); /* Emerald focus ring for dark mode */
+  --chart-1: oklch(0.55 0.12 162); /* #10b981 - Primary chart color */
+  --chart-2: oklch(0.65 0.15 200); /* #3b82f6 - Blue chart color */
+  --chart-3: oklch(0.75 0.15 85); /* #eab308 - Yellow chart color */
+  --chart-4: oklch(0.65 0.2 320); /* #a855f7 - Purple chart color */
+  --chart-5: oklch(0.65 0.2 25); /* #f97316 - Orange chart color */
+  --sidebar: oklch(0.12 0.01 258); /* #1e293b - Dark sidebar background */
+  --sidebar-foreground: oklch(0.95 0.005 258); /* #f8fafc - Light sidebar text */
+  --sidebar-primary: oklch(0.55 0.12 162); /* #10b981 - Emerald sidebar primary */
+  --sidebar-primary-foreground: oklch(0.08 0.005 258); /* #0f172a - Dark text on sidebar primary */
+  --sidebar-accent: oklch(0.25 0.01 258); /* #334155 - Dark sidebar accent */
+  --sidebar-accent-foreground: oklch(0.95 0.005 258); /* #f8fafc - Light text on sidebar accent */
+  --sidebar-border: oklch(0.25 0.01 258); /* #334155 - Dark sidebar borders */
+  --sidebar-ring: oklch(0.55 0.12 162 / 0.5); /* Emerald sidebar focus ring */
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Enhanced micro-interaction base styles with sophisticated animations */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Enhanced focus styles for better accessibility with ring animations */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+    animation: focusRing 0.3s ease-out;
+  }
+
+  /* Simplified hover transitions using only standard Tailwind classes */
+  button:hover:not(:disabled),
+  a:hover {
+    @apply transform scale-105 shadow-md;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Active state micro-interactions */
+  button:active:not(:disabled),
+  a:active {
+    @apply transform scale-95;
+    transition: all 0.1s ease-in;
+  }
+
+  /* Card hover effects with smooth elevation changes */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply shadow-lg transform -translate-y-1;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Loading state animations */
+  .loading-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Smooth slide-in animations for modals and notifications */
+  .slide-in-right {
+    animation: slideInRight 0.3s ease-out;
+  }
+
+  .slide-in-up {
+    animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  /* Stagger animation for list items */
+  .stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: staggerFadeIn 0.5s ease-out forwards;
+  }
+
+  .stagger-item:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .stagger-item:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .stagger-item:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .stagger-item:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .stagger-item:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
+  /* Smooth progress bar animations */
+  .progress-bar {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  /* Enhanced spinner with smooth rotation */
+  .spinner-smooth {
+    animation: spinSmooth 1s linear infinite;
+  }
+
+  /* Notification toast animations */
+  .toast-enter {
+    animation: toastSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .toast-exit {
+    animation: toastSlideOut 0.2s ease-in;
+  }
+
+  /* Button loading state with content preservation */
+  .btn-loading {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-loading::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+
+  /* Form input focus animations */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    @apply ring-2 ring-ring ring-offset-2;
+    animation: inputFocus 0.2s ease-out;
+  }
+
+  /* Navigation item active state animation */
+  .nav-active {
+    position: relative;
+  }
+
+  .nav-active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: var(--primary);
+    border-radius: 0 2px 2px 0;
+    animation: navIndicator 0.3s ease-out forwards;
+  }
+}
+
+/* Advanced keyframe animations for micro-interactions */
+@keyframes focusRing {
+  0% {
+    outline-width: 0;
+    outline-offset: 0;
+  }
+  100% {
+    outline-width: 2px;
+    outline-offset: 2px;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes staggerFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spinSmooth {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes toastSlideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes inputFocus {
+  0% {
+    box-shadow: 0 0 0 0 var(--ring);
+  }
+  100% {
+    box-shadow: 0 0 0 2px var(--ring);
+  }
+}
+
+@keyframes navIndicator {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 24px;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Enhanced component-specific micro-interactions */
+.btn-primary {
+  @apply relative overflow-hidden;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  box-shadow: 0 8px 25px -8px var(--primary);
+}
+
+.btn-primary:active:not(:disabled) {
+  box-shadow: 0 4px 15px -8px var(--primary);
+}
+
+/* Card component enhancements */
+.card-interactive {
+  @apply transition-all duration-300 ease-out cursor-pointer;
+  border: 1px solid var(--border);
+}
+
+.card-interactive:hover {
+  border-color: var(--primary);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Status badge animations */
+.status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium transition-all duration-200;
+}
+
+.status-badge.status-success {
+  @apply bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300;
+}
+
+.status-badge.status-error {
+  @apply bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300;
+}
+
+.status-badge.status-warning {
+  @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300;
+}
+
+.status-badge.status-info {
+  @apply bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300;
+}
+
+/* Loading skeleton animations */
+.skeleton {
+  @apply bg-muted animate-pulse rounded;
+}
+
+.skeleton-text {
+  @apply h-4 bg-muted rounded animate-pulse;
+}
+
+.skeleton-avatar {
+  @apply w-10 h-10 bg-muted rounded-full animate-pulse;
+}
+
+/* Smooth scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Responsive animation preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
